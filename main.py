@@ -7,7 +7,7 @@ pygame.init()
 # Screen setup
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
 pygame.display.set_caption("Wave of the Wild: Jump mechanics added")
 
 # Colors
@@ -53,7 +53,17 @@ while game_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_running = False
-
+        elif event.type == pygame.VIDEORESIZE:
+            SCREEN_WIDTH, SCREEN_HEIGHT = event.w, event.h
+            screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
+             # Update floor when window is resized
+            jungle_floor = pygame.Rect(0, SCREEN_HEIGHT - FLOOR_HEIGHT, SCREEN_WIDTH, FLOOR_HEIGHT)
+              # ✅ Ensure tiger stays within the new window width
+    if player_rect.right > SCREEN_WIDTH:
+        player_rect.right = SCREEN_WIDTH
+    if player_rect.left < 0:
+        player_rect.left = 0
+            
     # Key states for player movement (left/right)
     keys = pygame.key.get_pressed()
 
@@ -118,4 +128,4 @@ while game_running:
 
 # Quit Pygame
 pygame.quit()
-sys.exit()
+

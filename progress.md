@@ -6,6 +6,11 @@ It follows semantic versioning alignment with the project's `CHANGELOG.md` but i
 
 ---
 
+
+## 🗓️ November 10 2025 — Progress
+
+- Fixed bug ~ Window screen resizing issue works properly now. Dug through Pygame's documentation for the answer.
+
 ## 🗓️ November 9 2025 — Progress
 
 - README.md Initial content added; will be updated further as the project progresses.
