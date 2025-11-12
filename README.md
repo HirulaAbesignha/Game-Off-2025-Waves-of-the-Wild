@@ -77,11 +77,17 @@ Wildlife AI	Basic movement and reactions	🔜
 Contributions, issue reports, and feature discussions are welcome.
 Please open an issue before submitting a pull request so we can align ideas early.
 
-📄 License
+## 🤝 Team Members — Wild Tide Team (WTT)
+Access the documentation for the team:
+
+- 🧾 [TeamMembers.md](https://github.com/bijiyiqi2017/Waves-of-the-Wild/blob/main/TeamMembers.md)
+
+
+## 📄 License
 This project is released under the MIT License.
 See the LICENSE file for details.
  
 
-“Every ripple begins with a spark — may your code bring the wild to life.”
+## “Every ripple begins with a spark — may your code bring the wild to life.”
 
 
