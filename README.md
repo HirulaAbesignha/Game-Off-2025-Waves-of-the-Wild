@@ -48,6 +48,7 @@ source venv/bin/activate
 # Linux/macOS
 
 ```
+source venv/bin/activate   # Linux/macOS
 venv\Scripts\activate      # Windows
 ```
 
@@ -84,6 +85,7 @@ Access the documentation for the team:
 
 
 ## 📄 License
+📄 License
 This project is released under the MIT License.
 See the LICENSE file for details.
  
