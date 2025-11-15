@@ -72,15 +72,23 @@ while game_running:
         elif event.type == pygame.VIDEORESIZE:
             SCREEN_WIDTH, SCREEN_HEIGHT = event.w, event.h
             screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
-             # Update floor when window is resized
+            # Update floor when window is resized
             jungle_floor = pygame.Rect(0, SCREEN_HEIGHT - FLOOR_HEIGHT, SCREEN_WIDTH, FLOOR_HEIGHT)
-              # ✅ Ensure tiger stays within the new window width
-    if player_rect.right > SCREEN_WIDTH:
-        player_rect.right = SCREEN_WIDTH
-    if player_rect.left < 0:
-        player_rect.left = 0
+            # Ensure tiger stays within the new window width
+            if player_rect.right > SCREEN_WIDTH:
+                player_rect.right = SCREEN_WIDTH
+            if player_rect.left < 0:
+                player_rect.left = 0
+        
+        # Handle jump as a single event instead of continuous key press
+        # This prevents the player from jumping repeatedly when holding spacebar
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and on_ground:
+                velocity_y = jump_power  # Apply upward force
+                on_ground = False  # Player is now in the air
             
     # Key states for player movement (left/right)
+    # NOTE: We still use get_pressed() for left/right movement because we WANT continuous movement
     keys = pygame.key.get_pressed()
 
     # Left/Right Movement (Boundary checks to keep the player on screen)
@@ -92,11 +100,6 @@ while game_running:
         player_rect.x += player_speed  # Move player to the right
         if player_rect.x > SCREEN_WIDTH - player_width:  # Prevent player from moving off-screen to the right
             player_rect.x = SCREEN_WIDTH - player_width
-
-    # Jumping (only if on the ground)
-    if keys[pygame.K_SPACE] and on_ground:
-        velocity_y = jump_power  # Apply upward force
-        on_ground = False  # Player is in the air
 
     # Apply gravity (pull player down)
     velocity_y += gravity
@@ -115,7 +118,7 @@ while game_running:
         game_over = True
         
     # Banana Collection
-    if player_rect.colliderect(banana_rect)    :
+    if player_rect.colliderect(banana_rect):
         current_energy = min(current_energy + energy_gain, max_energy) # Increase Energy
         banana_rect.topleft = (-100, -100) # Remove banana after collection
         
@@ -169,4 +172,3 @@ while game_running:
 
 # Quit Pygame
 pygame.quit()
-
