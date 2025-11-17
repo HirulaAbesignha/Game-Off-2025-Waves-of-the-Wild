@@ -107,7 +107,7 @@ while game_running:
             SCREEN_WIDTH, SCREEN_HEIGHT = event.w, event.h
             screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
             jungle_floor = pygame.Rect(0, SCREEN_HEIGHT - FLOOR_HEIGHT, SCREEN_WIDTH, FLOOR_HEIGHT)
-            water_rect.y = SCREEN_HEIGHT - FLOOR_HEIGHT - lake_height
+            water_rect.y =  SCREEN_HEIGHT - FLOOR_HEIGHT - lake_height
 
             # Ensure tiger stays within the new window width and doesn't fall through floor
             if player_rect.right > SCREEN_WIDTH:
@@ -148,12 +148,7 @@ while game_running:
         player_rect.x -= speed
     if keys[pygame.K_RIGHT]:
         player_rect.x += speed
-
-    # Jump
-    if keys[pygame.K_SPACE] and on_ground:
-        velocity_y = jump_power
-        on_ground = False
-
+    
     # Apply gravity
     velocity_y += gravity
     player_rect.y += velocity_y

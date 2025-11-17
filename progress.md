@@ -6,7 +6,23 @@ It follows semantic versioning alignment with the project's `CHANGELOG.md` but i
 
 ---
 
+## 🗓️ November 17, 2025
+
+- Removed extra jump code to fix broken jump mechanics 
+
+## 🗓️ November 16, 2025
+
+- Cherry picked platforms
+
+## 🗓️ November 15, 2025
+
+- Created rectangle blue lake ~ Tiger speed slows down when it touches the water. 
+
 ## 🗓️ November 14, 2025
+
+- Push and merged energy-system branch to remote
+
+- Created pylint.yml & .pylintrc and pulled (GitHub workflows)
 
 - 
 
